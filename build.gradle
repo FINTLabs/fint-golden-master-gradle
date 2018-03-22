@@ -1,0 +1,45 @@
+plugins {
+    id 'com.jfrog.bintray' version '1.8.0'
+    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'com.github.kt3k.coveralls' version '2.8.2'
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+
+jar {
+    baseName = 'fint-golden-master-gradle'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+        url 'http://dl.bintray.com/fint/maven'
+    }
+}
+
+
+apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
+dependencies {
+    /* TODO */
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = gradleVersion
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+    apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/bintray.gradle'
+}
