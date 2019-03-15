@@ -9,10 +9,6 @@ apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'jacoco'
 
-jar {
-    baseName = 'fint-golden-master-gradle'
-}
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -28,10 +24,6 @@ repositories {
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
 dependencies {
     /* TODO */
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = gradleVersion
 }
 
 jacocoTestReport {
