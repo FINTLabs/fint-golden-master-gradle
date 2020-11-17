@@ -1,5 +1,4 @@
 plugins {
-    id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'com.github.kt3k.coveralls' version '2.9.0'
 }
@@ -32,6 +31,6 @@ jacocoTestReport {
     }
 }
 
-if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
-    apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/v1.8.0/bintray.gradle'
+if (project.hasProperty('gpr.user') && project.hasProperty('gpr.key')) {
+    apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/github.gradle'
 }
